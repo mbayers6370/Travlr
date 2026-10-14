@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { AuthResponse, AuthenticatedUser } from '../models/auth';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class Authentication {
   private readonly http = inject(HttpClient);
   private readonly router = inject(Router);
-  private readonly apiUrl = 'http://localhost:3000/api';
+  private readonly apiUrl = `${environment.apiOrigin}/api`;
   private readonly tokenKey = 'travlr-admin-token';
   private readonly userKey = 'travlr-admin-user';
 

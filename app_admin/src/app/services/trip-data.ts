@@ -3,12 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Trip } from '../models/trip';
 import { Message } from '../models/message';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TripData {
-  private apiOrigin = 'http://localhost:3000';
+  private apiOrigin = environment.apiOrigin;
   private apiUrl = `${this.apiOrigin}/api/trips`;
 
   constructor(private http: HttpClient) {}
