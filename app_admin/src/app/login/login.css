@@ -1,0 +1,13 @@
+.login-page { align-items: center; background: #f6f5f1; display: flex; justify-content: center; min-height: 100vh; padding: 24px; }
+.login-card { background: #fff; border: 1px solid #e7e2d8; border-radius: 14px; box-shadow: 0 16px 45px rgba(29, 48, 45, .12); display: grid; gap: 10px; max-width: 390px; padding: 38px; width: 100%; }
+.login-card img { margin-bottom: 4px; }
+.eyebrow { color: #56726c; font-weight: 700; letter-spacing: .08em; margin: 0; text-transform: uppercase; }
+h1 { color: #1d302d; margin: 0; }
+.description { color: #52615d; margin: 0 0 12px; }
+label { color: #263c37; font-weight: 700; }
+input { border: 1px solid #b8c2bd; border-radius: 6px; font: inherit; padding: 11px; }
+button { background: #1d6257; border: 0; border-radius: 6px; color: #fff; cursor: pointer; font: inherit; font-weight: 700; margin-top: 10px; padding: 12px; }
+button:disabled { cursor: not-allowed; opacity: .55; }
+.error, .notice { border-radius: 6px; margin: 0 0 6px; padding: 10px; }
+.error { background: #fff0f0; color: #9d1b1b; }
+.notice { background: #edf6f3; color: #245b50; }

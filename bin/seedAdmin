@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+
+require('dotenv').config();
+
+const required = ['ADMIN_NAME', 'ADMIN_EMAIL', 'ADMIN_PASSWORD'];
+const missing = required.filter((key) => !process.env[key]);
+
+if (missing.length) {
+  console.error(`Unable to seed admin: Missing required environment values: ${missing.join(', ')}`);
+  process.exit(1);
+}
+
+if (process.env.ADMIN_PASSWORD.length < 12) {
+  console.error('Unable to seed admin: ADMIN_PASSWORD must be at least 12 characters long.');
+  process.exit(1);
+}
+
+const mongoose = require('mongoose');
+require('../app_api/models/db');
+const User = require('../app_api/models/user');
+
+const seedAdmin = async () => {
+  await mongoose.connection.asPromise();
+  const email = process.env.ADMIN_EMAIL.trim().toLowerCase();
+  const existing = await User.findOne({ email });
+  if (existing) {
+    console.log(`Admin account ${email} already exists; password was not changed.`);
+    return;
+  }
+
+  const admin = new User({ name: process.env.ADMIN_NAME.trim(), email, role: 'admin' });
+  await admin.setPassword(process.env.ADMIN_PASSWORD);
+  await admin.save();
+  console.log(`Created admin account ${email}.`);
+};
+
+seedAdmin()
+  .catch((err) => {
+    console.error(`Unable to seed admin: ${err.message}`);
+    process.exitCode = 1;
+  })
+  .finally(() => mongoose.connection.close());

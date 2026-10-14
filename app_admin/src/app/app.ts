@@ -1,5 +1,6 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, signal } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Authentication } from './services/authentication';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +10,10 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
   styleUrl: './app.css'
 })
 export class App {
+  protected readonly auth = inject(Authentication);
   protected readonly title = signal('travlr-admin');
+
+  protected logout(): void {
+    this.auth.logout();
+  }
 }
