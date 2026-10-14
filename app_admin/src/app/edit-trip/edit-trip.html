@@ -1,0 +1,32 @@
+<main class="admin-page form-page">
+  <button type="button" class="back-link back-link-button" (click)="cancel()"><ion-icon name="chevron-back-outline" aria-hidden="true"></ion-icon> Back to trips</button>
+  <div class="page-heading"><h2>Edit Trip</h2><p>Refine a published travel experience.</p></div>
+  <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <form class="trip-form" [formGroup]="tripForm" (ngSubmit)="saveTrip()" novalidate *ngIf="!errorMessage">
+    <div class="row g-3">
+      <h3 class="form-section-title">Basic information</h3>
+      <div class="col-md-8"><label class="form-label" for="name">Trip name</label><input id="name" class="form-control" formControlName="name"><div class="text-danger small" *ngIf="tripForm.controls.name.touched && tripForm.controls.name.invalid">Name is required.</div></div>
+      <div class="col-md-4"><label class="form-label" for="code">Trip code</label><input id="code" class="form-control" formControlName="code"><div class="form-text">Trip code cannot be changed.</div></div>
+      <div class="col-md-6"><label class="form-label" for="resort">Resort</label><input id="resort" class="form-control" formControlName="resort"><div class="text-danger small" *ngIf="tripForm.controls.resort.touched && tripForm.controls.resort.invalid">Resort is required.</div></div>
+      <div class="col-md-6"><label class="form-label" for="length">Duration</label><input id="length" class="form-control" formControlName="length"><div class="text-danger small" *ngIf="tripForm.controls.length.touched && tripForm.controls.length.invalid">Duration is required.</div></div>
+      <h3 class="form-section-title">Scheduling & pricing</h3>
+      <div class="col-md-6"><label class="form-label" for="start">Start date</label><input id="start" type="date" class="form-control" formControlName="start"><div class="text-danger small" *ngIf="tripForm.controls.start.touched && tripForm.controls.start.invalid">Start date is required.</div></div>
+      <div class="col-md-6"><label class="form-label" for="perPerson">Price per person</label><input id="perPerson" class="form-control" formControlName="perPerson"><div class="text-danger small" *ngIf="tripForm.controls.perPerson.touched && tripForm.controls.perPerson.invalid">Price is required.</div></div>
+      <h3 class="form-section-title">Trip details</h3>
+      <div class="col-12 image-upload-field">
+        <label class="form-label" for="image">Trip image</label>
+        <div class="image-upload-control">
+          <input id="image" type="file" accept="image/jpeg,image/png,image/webp" (change)="onImageSelected($event)" [disabled]="imageUploading">
+          <span>{{ imageUploading ? 'Uploading image…' : 'Choose a replacement JPG, PNG, or WebP image' }}</span>
+        </div>
+        <img *ngIf="imagePreviewUrl" class="image-preview" [src]="imagePreviewUrl" alt="Trip image preview">
+        <div class="form-text" *ngIf="tripForm.controls.image.value">{{ tripForm.controls.image.value }}</div>
+        <div class="text-danger small" *ngIf="imageErrorMessage">{{ imageErrorMessage }}</div>
+        <div class="text-danger small" *ngIf="tripForm.controls.image.touched && tripForm.controls.image.invalid">An image is required.</div>
+      </div>
+      <div class="col-12"><label class="form-label" for="description">Description</label><textarea id="description" rows="4" class="form-control" formControlName="description"></textarea><div class="text-danger small" *ngIf="tripForm.controls.description.touched && tripForm.controls.description.invalid">Description is required.</div></div>
+    </div>
+    <div class="form-actions"><button type="submit" class="btn btn-primary">Save Changes</button><button type="button" class="btn btn-outline-secondary" (click)="cancel()">Cancel</button></div>
+  </form>
+</main>

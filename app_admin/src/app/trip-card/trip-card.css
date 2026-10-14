@@ -1,0 +1,19 @@
+:host { display: block; min-width: 0; }
+
+.trip-row { display: flex; height: 100%; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 1rem; background: #fff; }
+.trip-row > img { width: 100%; height: 10.5rem; object-fit: cover; }
+.trip-content { flex: 1; padding: 1.35rem 1.4rem .75rem; }
+.trip-identity { margin-bottom: 1rem; }
+.trip-identity h3 { margin: 0 0 .35rem; color: var(--ink); font: 400 1.55rem/1.12 var(--display); }
+.trip-identity span { color: var(--teal); font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.trip-description { color: #5b6c70; font: 400 1rem/1.65 var(--body); }
+.trip-description :first-child { margin-top: 0; }
+.trip-description :last-child { margin-bottom: 0; }
+.trip-actions { display: flex; justify-content: center; gap: .55rem; align-items: center; padding: .9rem 1.4rem 1.25rem; }
+.trip-actions .btn { display: inline-flex; align-items: center; justify-content: center; gap: .3rem; min-height: 2.35rem; padding: .4rem .85rem; border-radius: 999px; font-size: .92rem; }
+.trip-actions ion-icon { font-size: 1rem; }
+.trip-actions .icon-button { min-width: 2.35rem; padding: .35rem; }
+
+@media (min-width: 640px) {
+  .trip-row > img { height: 12rem; }
+}

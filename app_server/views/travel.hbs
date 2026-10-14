@@ -35,7 +35,7 @@
 							<a href="/rooms.html">Rooms</a>
 						</li>
 						<li>
-							<a href="/meals.html">Meals</a>
+							<a href="/meals.html">Dining</a>
 						</li>
 						<li>
 							<a href="/news.html">News</a>
@@ -54,8 +54,8 @@
 					<div>
 						<div class="body">
 							<div class="travel-intro">
-								<h1>Travel</h1>
-								<p>Polished alpine escapes shaped around still water, pale peaks, and days that unfold without hurry.</p>
+								<h1>Travel, beautifully arranged.</h1>
+								<p>Every package pairs a considered stay with a slower route through the mountains. Your room, timing, and travel rhythm are planned together.</p>
 							</div>
 							{{#if message}}
 							<p class="travel-message">{{message}}</p>
@@ -63,9 +63,11 @@
 							<ul id="sites">
 								{{#each trips}}
 								<li>
-									<a href="/travel/{{this.code}}"><img src="/images/{{this.image}}" alt="{{this.name}}"></a>
+									<a href="/travel/{{this.code}}"><img src="/images/{{this.image}}" onerror="this.onerror=null;this.src='/images/Travel.jpg';" alt="{{this.name}}"></a>
 									<h2><a href="/travel/{{this.code}}">{{this.name}}</a></h2>
-									{{{this.description}}}
+									<div class="travel-card-description">{{{this.description}}}</div>
+									<div class="travel-card-meta"><span>{{this.length}}</span><span>Stay at {{this.resort}}</span>{{#if this.startDate}}<span>Departs {{this.startDate}}</span>{{/if}}<span>{{this.perPerson}}</span></div>
+									<div class="travel-card-actions"><a class="booking-button" href="/travel/{{this.code}}#availability">Check package availability</a></div>
 								</li>
 								{{/each}}
 							</ul>

@@ -35,7 +35,7 @@
 							<a href="rooms.html">Rooms</a>
 						</li>
 						<li>
-							<a href="meals.html">Meals</a>
+							<a href="meals.html">Dining</a>
 						</li>
 						<li>
 							<a href="news.html">News</a>
@@ -59,27 +59,30 @@
 									Tell us where you want to go next. Our travel concierge will help shape a getaway that feels effortless from the first note.
 								</p>
 							</div>
-							<form action="index.html" method="post">
+							<form id="contact-form" action="/api/messages" method="post">
+								<input id="contact-kind" name="kind" type="hidden" value="contact">
+								<input id="contact-room" name="roomName" type="hidden" value="">
 								<table>
 									<tbody>
 										<tr>
 											<td><label for="contact-name">Name:</label></td>
-											<td><input id="contact-name" name="name" type="text" class="txtfield"></td>
+											<td><input id="contact-name" name="name" type="text" class="txtfield" required></td>
 										</tr> <tr>
 											<td><label for="contact-email">Email:</label></td>
-											<td><input id="contact-email" name="email" type="email" class="txtfield"></td>
+											<td><input id="contact-email" name="email" type="email" class="txtfield" required></td>
 										</tr> <tr>
 											<td><label for="contact-subject">Subject:</label></td>
 											<td><input id="contact-subject" name="subject" type="text" class="txtfield"></td>
 										</tr> <tr>
 											<td class="txtarea"><label for="contact-message">Message:</label></td>
-											<td><textarea id="contact-message" name="message"></textarea></td>
+											<td><textarea id="contact-message" name="message" required></textarea></td>
 										</tr> <tr>
 											<td></td>
 											<td><input type="submit" value="Send" class="btn"></td>
 										</tr>
 									</tbody>
 								</table>
+								<p class="form-status" aria-live="polite"></p>
 							</form>
 							<div class="contact-details">
 								<h2>Travlr Getaways</h2>
@@ -111,7 +114,7 @@
 						<a href="rooms.html">Rooms</a>
 					</li>
 					<li>
-						<a href="meals.html">Meals</a>
+							<a href="meals.html">Dining</a>
 					</li>
 					<li>
 						<a href="news.html">News</a>
@@ -136,5 +139,6 @@
 		</div>
 	</div>
 	<script src="js/navigation.js"></script>
+	<script src="js/contact-form.js"></script>
 </body>
 </html>

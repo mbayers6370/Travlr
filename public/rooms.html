@@ -35,7 +35,7 @@
 							<a href="rooms.html">Rooms</a>
 						</li>
 						<li>
-							<a href="meals.html">Meals</a>
+							<a href="meals.html">Dining</a>
 						</li>
 						<li>
 							<a href="news.html">News</a>
@@ -55,7 +55,7 @@
 						<div class="body">
 							<div class="rooms-intro">
 								<h1>Rooms</h1>
-								<p>Quiet rooms with polished details, warm light, and space to settle in after days spent between lake and mountain.</p>
+								<p>Choose your accommodation independently, or begin with a Travel package when you want the stay and itinerary considered together.</p>
 							</div>
 							<ul id="rooms">
 								<li>
@@ -65,12 +65,13 @@
 										<p>
 											A compact, polished room for quick getaways and quiet solo stays. It keeps the essentials close: soft linens, warm light, and a simple place to reset between lake walks and early starts.
 										</p>
+										<p class="room-fit">Best for solo escapes and short stays.</p>
 										<ul class="room-amenities">
 											<li>Compact Layout</li>
 											<li>Sleeps 1-2</li>
 											<li>Breakfast Available</li>
 										</ul>
-										<span class="rate">From 150 / night</span>
+										<div class="room-actions"><span class="rate">From 150 / night</span><button class="room-availability" type="button" data-room="The Nook">Check room availability</button></div>
 									</div>
 								</li>
 								<li>
@@ -80,12 +81,13 @@
 										<p>
 											A balanced room with more space to unpack, read, and settle in after a day outside. The mood is easy and considered, with enough room to make a weekend feel unhurried.
 										</p>
+										<p class="room-fit">Best for couples who want space to unwind.</p>
 										<ul class="room-amenities">
 											<li>Extra Floor Space</li>
 											<li>Sleeps 2</li>
 											<li>Reading Nook</li>
 										</ul>
-										<span class="rate">From 190 / night</span>
+										<div class="room-actions"><span class="rate">From 190 / night</span><button class="room-availability" type="button" data-room="The Drift Room">Check room availability</button></div>
 									</div>
 								</li>
 								<li>
@@ -95,15 +97,21 @@
 										<p>
 											The most spacious stay in the house, made for longer weekends and slower evenings. Separate corners for lounging, sleeping, and planning the next morning give the suite an easy residential feel.
 										</p>
+										<p class="room-fit">Best for longer stays and shared escapes.</p>
 										<ul class="room-amenities">
 											<li>Separate Lounge</li>
 											<li>Sleeps 4</li>
 											<li>Late Checkout</li>
 										</ul>
-										<span class="rate">From 260 / night</span>
+										<div class="room-actions"><span class="rate">From 260 / night</span><button class="room-availability" type="button" data-room="The Luxe Suite">Check room availability</button></div>
 									</div>
 								</li>
 							</ul>
+							<section class="rooms-guidance">
+								<h2>Not sure which room fits?</h2>
+								<p>Tell us what your getaway looks like and our concierge will help you find the right stay.</p>
+								<a href="contact.html#contact-form">Ask our concierge</a>
+							</section>
 						</div>
 					</div>
 				</div>
@@ -122,7 +130,7 @@
 						<a href="rooms.html">Rooms</a>
 					</li>
 					<li>
-						<a href="meals.html">Meals</a>
+							<a href="meals.html">Dining</a>
 					</li>
 					<li>
 						<a href="news.html">News</a>
@@ -147,5 +155,6 @@
 		</div>
 	</div>
 	<script src="js/navigation.js"></script>
+	<script src="js/room-availability.js"></script>
 </body>
 </html>

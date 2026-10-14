@@ -1,0 +1,28 @@
+.trips-page { padding-top: 1.25rem; }
+.add-trip-button { display: inline-flex; min-width: 5.9rem; align-items: center; justify-content: center; gap: .22rem; margin-top: 1rem; border: 1px solid #8bb3ac; border-radius: 999px; padding: .34rem .58rem; background: transparent; color: var(--teal-dark); font: 600 .74rem/1 var(--body); white-space: nowrap; }
+.add-trip-button:hover, .add-trip-button:focus { border-color: var(--teal-dark); background: #eaf3f1; color: var(--teal-dark); }
+.add-trip-button ion-icon { font-size: .9rem; }
+.trip-collection { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-top: 1.4rem; }
+.empty-trips { padding: 2.5rem 1rem; border: 1px dashed var(--line); border-radius: .5rem; text-align: center; }
+
+.delete-backdrop { position: fixed; z-index: 10; inset: 0; display: grid; place-items: center; padding: 1rem; background: rgba(38, 56, 66, .64); }
+.delete-dialog { position: relative; width: min(100%, 25rem); padding: 2rem 1.5rem 1.5rem; border-radius: .75rem; background: #fff; text-align: center; box-shadow: 0 1.5rem 4rem rgba(12, 30, 42, .28); }
+.delete-dialog h2 { margin: 0 0 .55rem; font: 600 2rem/1 var(--display); }
+.delete-dialog p { margin: 0; color: #536561; font: 400 1rem/1.45 var(--display); }
+.dialog-close { position: absolute; top: .7rem; right: .7rem; display: grid; width: 2rem; height: 2rem; place-items: center; padding: 0; border: 0; border-radius: 50%; color: #71817e; background: transparent; }
+.dialog-close:hover { background: var(--soft); }
+.dialog-close ion-icon { font-size: 1.35rem; }
+.dialog-actions { display: flex; justify-content: center; gap: .65rem; margin-top: 1.5rem; }
+.dialog-actions .btn { min-width: 7.5rem; padding: .55rem .75rem; border-radius: 999px; }
+
+@media (min-width: 640px) {
+  .page-heading { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+  .add-trip-button { gap: .28rem; margin-top: 0; padding: .42rem .72rem; font-size: .82rem; }
+  .add-trip-button ion-icon { font-size: 1rem; }
+  .trip-collection { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .delete-dialog { padding: 2.35rem 2.5rem 2.2rem; }
+}
+
+@media (min-width: 1120px) {
+  .trip-collection { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}

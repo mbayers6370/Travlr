@@ -1,0 +1,84 @@
+:root {
+  --ink: #33414e;
+  --teal: #316e66;
+  --teal-dark: #165e55;
+  --paper: #ffffff;
+  --soft: #f3f6f5;
+  --line: #d6dfdc;
+  --mist: #f6f8f7;
+  --danger: #b84a4a;
+  --display: 'Source Serif Pro', 'Source Serif 4', Georgia, 'Times New Roman', serif;
+  --body: Inter, Arial, Helvetica, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body { margin: 0; background: var(--mist); color: var(--ink); font-family: var(--body); }
+button, input, textarea { font: inherit; }
+ion-icon { display: block; font-size: 1.25rem; }
+
+.admin-shell { min-height: 100vh; }
+.admin-sidebar { padding: .75rem 1rem; color: #fff; background: var(--ink); }
+.brand { display: inline-flex; align-items: center; gap: .55rem; color: inherit; text-decoration: none; }
+.brand-mark { flex: 0 0 38px; inline-size: 38px !important; block-size: 38px !important; max-inline-size: 38px !important; object-fit: contain; filter: brightness(0) invert(1); }
+.brand h1 { display: flex; flex-direction: column; margin: 0; line-height: .86; }
+.logo-brand { font: 600 1.45rem/1 var(--display); }
+.logo-subbrand { color: #a8d6ce; font: 400 .74rem/1.1 'Avenir Next', 'Gill Sans', sans-serif; letter-spacing: .04em; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+.admin-navigation { display: flex; justify-content: center; gap: .25rem; margin-top: .8rem; }
+.admin-navigation a, .view-site { display: inline-flex; position: relative; min-height: 2.5rem; align-items: center; gap: .45rem; padding: .45rem .65rem; border-radius: .28rem; color: inherit; font: 500 .95rem/1 var(--display); text-decoration: none; }
+.admin-navigation a.is-active::after { content: ""; position: absolute; right: .65rem; bottom: .28rem; left: .65rem; height: 1px; background: #a8d6ce; }
+.admin-navigation a[aria-disabled='true'] { opacity: .72; }
+.admin-navigation ion-icon, .view-site ion-icon { font-size: 1.1rem; }
+.view-site { display: none; }
+
+.admin-topbar { display: flex; justify-content: flex-end; align-items: center; gap: .85rem; min-height: 3.5rem; padding: 0 1rem; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, .92); font: 500 .95rem/1 var(--display); }
+.topbar-divider { width: 1px; height: 1.45rem; background: var(--line); }
+.admin-avatar { display: grid; width: 2.2rem; height: 2.2rem; place-items: center; border-radius: 50%; background: #e7edeb; font-size: .77rem; }
+
+.admin-page { max-width: 1250px; margin: 0 auto; padding: 1.5rem 1rem 2.5rem; }
+.page-heading { margin-bottom: 1.15rem; }
+.page-heading h2 { margin: 0; color: var(--ink); font: 600 clamp(2.2rem, 10vw, 3.1rem)/1 var(--display); letter-spacing: -.035em; }
+.page-heading p { margin: .35rem 0 0; color: #70807d; font: 400 1.1rem/1.35 var(--display); }
+
+.btn { border-radius: .28rem; font-family: var(--display); }
+.btn-primary { border-color: var(--teal-dark); background: var(--teal-dark); }
+.btn-primary:hover, .btn-primary:focus { border-color: var(--teal); background: var(--teal); }
+.btn-outline-primary { border-color: #9bbdb8; color: var(--teal-dark); }
+.btn-outline-primary:hover, .btn-outline-primary:focus { border-color: var(--teal); background: var(--teal); }
+.btn-outline-danger { border-color: #d7aaa8; color: #a44747; }
+.btn-outline-danger:hover, .btn-outline-danger:focus { border-color: var(--danger); background: var(--danger); }
+
+.form-control { min-height: 2.65rem; border-color: var(--line); color: var(--ink); box-shadow: none; }
+.form-control:focus { border-color: #72a69d; box-shadow: 0 0 0 .2rem rgba(49, 110, 102, .12); }
+.form-label, .form-text { font-family: var(--display); }
+.form-label { margin-bottom: .35rem; color: var(--ink); }
+.form-page { max-width: 1040px; }
+.back-link { display: inline-flex; align-items: center; gap: .18rem; margin-bottom: 1rem; color: var(--teal-dark); font: 400 1rem/1 var(--display); text-decoration: none; }
+.back-link ion-icon { font-size: 1.05rem; }
+.back-link-button { padding: 0; border: 0; background: transparent; }
+.trip-form { padding: 1rem; border: 1px solid var(--line); border-radius: .35rem; background: var(--paper); }
+.image-upload-field { display: grid; gap: .5rem; }
+.image-upload-control { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; padding: .65rem .75rem; border: 1px dashed #8bb3ac; border-radius: .5rem; color: #58716c; background: #f8fbfa; font-size: .9rem; }
+.image-upload-control input { max-width: 100%; color: var(--ink); }
+.image-preview { width: min(100%, 16rem); aspect-ratio: 3 / 2; border-radius: .5rem; object-fit: cover; }
+.form-section-title { grid-column: 1 / -1; margin: .65rem 0 -.1rem; color: var(--ink); font: 600 .8rem/1 var(--display); letter-spacing: .05em; text-transform: uppercase; }
+.form-actions { display: flex; gap: .75rem; margin-top: 1.6rem; }
+.form-actions .btn { min-width: 8.7rem; padding: .55rem .85rem; }
+
+@media (min-width: 760px) {
+  .admin-shell { display: flex; }
+  .admin-sidebar { display: flex; flex: 0 0 252px; flex-direction: column; min-height: 100vh; padding: 1.5rem 1rem; background: linear-gradient(180deg, rgba(39, 65, 78, .96), rgba(31, 55, 69, .97)), url('/images/lake-braies-boathouse-boats.jpg') center bottom / cover; }
+  .brand { gap: .75rem; padding: 0 .8rem 2.2rem; }
+  .brand-mark { flex-basis: 42px; inline-size: 42px !important; block-size: 42px !important; max-inline-size: 42px !important; }
+  .logo-brand { font-size: 1.75rem; }
+  .logo-subbrand { font-size: .86rem; }
+  .admin-navigation { display: grid; gap: .45rem; margin-top: 0; }
+  .admin-navigation a, .view-site { min-height: 3.25rem; gap: .8rem; padding: .7rem 1rem; }
+  .view-site { display: flex; margin-top: 1.25rem; border-top: 1px solid rgba(219, 236, 239, .22); border-radius: 0; padding-top: 1.35rem; }
+  .admin-workspace { flex: 1; min-width: 0; }
+  .admin-topbar { min-height: 3.7rem; padding: 0 2.25rem; }
+  .admin-page { padding: 2rem 2.25rem 3rem; }
+  .trip-form { padding: 1.35rem; box-shadow: 0 .8rem 2rem rgba(28, 54, 70, .04); }
+}

@@ -1,0 +1,27 @@
+<main class="admin-page trips-page">
+  <div class="page-heading d-flex justify-content-between align-items-start gap-3">
+    <div>
+      <h2>Trips</h2>
+      <p>Manage published travel experiences.</p>
+    </div>
+    <button type="button" class="btn add-trip-button" (click)="addTrip()"><ion-icon name="add-outline" aria-hidden="true"></ion-icon> Add Trip</button>
+  </div>
+
+  <section class="trip-collection" *ngIf="trips.length; else noTrips" aria-label="Published trips">
+    <app-trip-card *ngFor="let trip of trips" [trip]="trip" (deleteRequested)="openDeleteDialog($event)"></app-trip-card>
+  </section>
+
+  <ng-template #noTrips>
+    <div class="empty-trips"><p>No trips are available.</p><button type="button" class="btn btn-primary" (click)="addTrip()">Add your first trip</button></div>
+  </ng-template>
+
+  <div class="delete-backdrop" *ngIf="tripToDelete" role="presentation">
+    <section class="delete-dialog" role="dialog" aria-modal="true" aria-labelledby="delete-title">
+      <button type="button" class="dialog-close" aria-label="Close delete confirmation" (click)="closeDeleteDialog()"><ion-icon name="close-outline" aria-hidden="true"></ion-icon></button>
+      <h2 id="delete-title">Delete Trip?</h2>
+      <p>Delete “{{ tripToDelete.name }}”?<br>This action cannot be undone.</p>
+      <p class="text-danger small" *ngIf="deleteErrorMessage">{{ deleteErrorMessage }}</p>
+      <div class="dialog-actions"><button type="button" class="btn btn-outline-secondary" (click)="closeDeleteDialog()">Cancel</button><button type="button" class="btn btn-danger" (click)="confirmDelete()">Delete Trip</button></div>
+    </section>
+  </div>
+</main>

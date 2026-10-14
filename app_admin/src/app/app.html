@@ -1,0 +1,35 @@
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <a class="brand" routerLink="/" aria-label="Travlr Getaways admin home">
+      <img class="brand-mark" src="/images/Bird_Oragami.png" alt="" aria-hidden="true" width="38" height="38">
+      <h1><span class="logo-brand">Travlr</span><span class="logo-subbrand">getaways</span><span class="visually-hidden"> Admin</span></h1>
+    </a>
+
+    <nav class="admin-navigation" aria-label="Admin navigation">
+      <a routerLink="/overview" routerLinkActive="is-active">
+        <ion-icon name="stats-chart-outline" aria-hidden="true"></ion-icon> Overview
+      </a>
+      <a routerLink="/" routerLinkActive="is-active" [routerLinkActiveOptions]="{ exact: true }">
+        <ion-icon name="map-outline" aria-hidden="true"></ion-icon> Trips
+      </a>
+      <a routerLink="/messages" routerLinkActive="is-active">
+        <ion-icon name="mail-outline" aria-hidden="true"></ion-icon> Messages
+      </a>
+    </nav>
+
+    <a class="view-site" href="http://localhost:3000" target="_blank" rel="noopener">
+      <ion-icon name="open-outline" aria-hidden="true"></ion-icon> View site
+    </a>
+  </aside>
+
+  <section class="admin-workspace">
+    <header class="admin-topbar">
+      <span>Admin</span>
+      <span class="topbar-divider" aria-hidden="true"></span>
+      <span class="admin-avatar" aria-label="Administrator">MB</span>
+      <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+    </header>
+
+    <router-outlet></router-outlet>
+  </section>
+</div>

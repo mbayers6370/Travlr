@@ -1,0 +1,46 @@
+.messages-page { display: grid; gap: 1.25rem; }
+.messages-page .page-heading { margin-bottom: 0; }
+.message-filters { display: grid; position: relative; width: fit-content; max-width: 100%; justify-self: center; grid-template-columns: minmax(0, 1fr); align-items: center; border: 1px solid var(--line); border-radius: .55rem; padding: .35rem .65rem; background: #fff; color: #58716c; }
+.message-filters ion-icon { position: absolute; top: 50%; right: .65rem; font-size: 1.15rem; pointer-events: none; transform: translateY(-50%); }
+.message-filters select { min-width: 0; appearance: none; -webkit-appearance: none; border: 0; padding: .45rem 1.5rem .45rem .1rem; background: transparent; color: var(--teal-dark); font: 600 .9rem/1.25 var(--body); }
+.message-filters select:focus-visible { border-radius: .25rem; outline: 0; background: #eaf3f1; }
+.message-list { display: grid; gap: .75rem; }
+.message-card { overflow: hidden; border: 1px solid var(--line); border-radius: .75rem; background: #fff; }
+.message-card.is-open { border-color: #97bdb6; }
+.message-summary { display: grid; width: 100%; grid-template-columns: auto minmax(0, 1fr) auto; gap: .65rem; align-items: start; border: 0; padding: 1rem; background: #fff; color: inherit; text-align: left; }
+.message-summary:hover { background: #fbfcfc; }
+.message-summary:focus-visible { outline: 3px solid rgba(49, 110, 102, .35); outline-offset: -3px; }
+.message-summary > ion-icon { margin-top: .08rem; color: #58716c; transition: transform .2s ease; }
+.message-card.is-open .message-summary > ion-icon { transform: rotate(180deg); }
+.unread-indicator { width: .55rem; height: .55rem; margin-top: .42rem; border-radius: 50%; background: var(--teal); }
+.unread-indicator.is-hidden { visibility: hidden; }
+.message-summary-main { display: grid; min-width: 0; }
+.message-summary-line { display: flex; justify-content: space-between; gap: .75rem; align-items: baseline; }
+.message-summary-line strong { min-width: 0; color: var(--ink); font: 600 1.08rem/1.15 var(--display); }
+.message-card.is-unread .message-summary-line strong { font-weight: 700; }
+.message-summary time, .message-detail time { flex: 0 0 auto; color: #71817e; font-size: .78rem; text-align: right; }
+.message-kind { border-radius: 999px; padding: .32rem .55rem; background: #eaf3f1; color: var(--teal-dark); font-size: .72rem; font-weight: 700; }
+.message-kind.room { background: #edf0f4; color: #425a70; }
+.message-kind.contact { background: #f4eeee; color: #79534d; }
+.message-detail { display: grid; gap: .85rem; padding: 0 1rem 1rem 2.2rem; background: #fff; }
+.message-detail-heading { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.message-person h3 { margin: 0; color: var(--ink); font: 600 1.3rem/1 var(--display); }
+.message-person a { display: inline-block; margin-top: .32rem; color: var(--teal-dark); font-size: .9rem; }
+.message-context, .message-subject, .message-body { margin: 0; }
+.message-context { color: #647471; font-size: .9rem; }
+.message-body { color: #4f5f68; line-height: 1.55; white-space: pre-wrap; }
+.message-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: .65rem; align-items: center; margin-top: .2rem; }
+.message-actions a, .message-actions button { display: inline-flex; min-height: 2.4rem; align-items: center; justify-content: center; border: 1px solid var(--teal-dark); border-radius: 999px; padding: .48rem .8rem; background: transparent; color: var(--teal-dark); font: 600 .88rem/1 var(--body); text-decoration: none; }
+.message-actions a { background: var(--teal-dark); color: #fff; }
+.message-actions a:hover { background: var(--teal); color: #fff; }
+.message-actions button:hover { background: #eaf3f1; }
+.empty-messages { border: 1px dashed #a8b9b5; border-radius: .75rem; padding: 2rem 1rem; background: #fff; text-align: center; }
+.empty-messages h3 { margin: 0; font: 600 1.35rem/1 var(--display); }
+.empty-messages p { max-width: 34rem; margin: .65rem auto 0; color: #71817e; }
+
+@media (min-width: 640px) {
+  .message-filters { justify-self: end; }
+  .message-summary { padding: 1.15rem 1.25rem; }
+  .message-detail { padding: 0 1.25rem 1.15rem 2.45rem; }
+  .message-actions { justify-content: flex-end; }
+}

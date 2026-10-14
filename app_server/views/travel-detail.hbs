@@ -35,7 +35,7 @@
 							<a href="/rooms.html">Rooms</a>
 						</li>
 						<li>
-							<a href="/meals.html">Meals</a>
+							<a href="/meals.html">Dining</a>
 						</li>
 						<li>
 							<a href="/news.html">News</a>
@@ -63,21 +63,44 @@
 							{{#if trip}}
 							<article class="travel-detail">
 								<a class="travel-back" href="/travel">Back to Travel</a>
-								<img class="travel-detail-image" src="/images/{{trip.image}}" alt="{{trip.name}}">
+								<img class="travel-detail-image" src="/images/{{trip.image}}" onerror="this.onerror=null;this.src='/images/Travel.jpg';" alt="{{trip.name}}">
 								<div class="travel-detail-content">
 									<div>
-										<p class="travel-detail-code">{{trip.code}}</p>
+										<p class="travel-detail-code">Curated package · {{trip.code}}</p>
 										<h1>{{trip.name}}</h1>
 									</div>
 									<div class="travel-detail-meta">
-										<p><span>Length</span>{{trip.length}}</p>
-										<p><span>Starts</span>{{trip.startDate}}</p>
-										<p><span>Resort</span>{{trip.resort}}</p>
-										<p><span>Rate</span>{{trip.perPerson}}</p>
+										<p><span>Package length</span>{{trip.length}}</p>
+										<p><span>Departure</span>{{trip.startDate}}</p>
+										<p><span>Your stay</span>{{trip.resort}}</p>
+										<p><span>Package from</span>{{trip.perPerson}}</p>
 									</div>
 									<div class="travel-detail-description">
 										{{{trip.description}}}
 									</div>
+									<section class="package-includes">
+										<h2>Your package includes</h2>
+										<ul>
+											<li><strong>{{trip.length}}</strong> based at {{trip.resort}}</li>
+											<li>A paced itinerary shaped around the destination</li>
+											<li>Concierge support to tailor the details before you go</li>
+										</ul>
+									</section>
+									<section class="booking-panel" id="availability">
+										<h2>Check package availability</h2>
+										<p>Tell us when you’d like to travel and we’ll confirm the stay and package timing within 24 hours.</p>
+										{{#if bookingSuccess}}<p class="booking-success">Your request is in. We’ll be in touch shortly.</p>{{/if}}
+										{{#if bookingError}}<p class="booking-error">{{bookingError}}</p>{{/if}}
+										<form method="post" action="/travel/{{trip.code}}/request">
+											<label for="name">Your name</label><input id="name" name="name" value="{{bookingValues.name}}" required>
+											<label for="email">Email address</label><input id="email" name="email" type="email" value="{{bookingValues.email}}" required>
+											<label for="travelers">Travelers</label><input id="travelers" name="travelers" type="number" min="1" value="{{bookingValues.travelers}}" required>
+											<label for="preferredDate">Preferred departure</label><input id="preferredDate" name="preferredDate" type="date" value="{{bookingValues.preferredDate}}">
+											<label for="message">Anything we should know?</label><textarea id="message" name="message" rows="4">{{bookingValues.message}}</textarea>
+											<button class="booking-button" type="submit">Request this package</button>
+										</form>
+										<p class="booking-note">Small-group departures, tailored timing, and a response within 24 hours.</p>
+									</section>
 								</div>
 							</article>
 							{{/if}}

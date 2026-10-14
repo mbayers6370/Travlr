@@ -1,0 +1,48 @@
+<main class="admin-page overview-page">
+  <div class="page-heading">
+    <h2>Overview</h2>
+    <p>A quick view of the travel experiences you have published.</p>
+  </div>
+
+  <p class="text-danger" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <section class="overview-stats" *ngIf="!errorMessage">
+    <article><span>Published trips</span><strong>{{ trips.length }}</strong></article>
+    <article><span>Destinations</span><strong>{{ resortCount }}</strong></article>
+    <article><span>Trip nights</span><strong>{{ totalNights }}</strong></article>
+  </section>
+
+  <section class="next-trip" *ngIf="nextTrip as trip">
+    <div>
+      <span class="section-label">Next scheduled trip</span>
+      <h3>{{ trip.name }}</h3>
+      <p>{{ trip.resort }} · {{ trip.start | date: 'MMMM d, y' }}</p>
+    </div>
+    <div class="overview-actions">
+      <a class="btn btn-outline-primary" [routerLink]="['/edit-trip', trip.code]">Edit trip</a>
+      <a class="btn btn-primary" routerLink="/add-trip">Add Trip</a>
+    </div>
+  </section>
+
+  <section class="overview-inbox">
+    <div class="inbox-summary">
+      <span class="section-label">Messages</span>
+      <h3>{{ unreadMessageCount }} unread</h3>
+    </div>
+    <a class="latest-message" routerLink="/messages" *ngIf="latestMessage as message; else noMessages">
+      <span>{{ messageSubject(message) }}</span>
+      <small>{{ message.name }} · {{ message.createdAt | date: 'MMM d' }}</small>
+    </a>
+    <ng-template #noMessages><p class="no-messages">No messages yet.</p></ng-template>
+    <a class="inbox-link" routerLink="/messages">Open messages</a>
+  </section>
+
+  <section class="overview-roster" *ngIf="trips.length">
+    <div class="roster-heading"><h3>Published trips</h3><a routerLink="/">Manage trips</a></div>
+    <div *ngFor="let trip of trips" class="roster-item">
+      <img [src]="imageUrl(trip.image)" [alt]="trip.name">
+      <div><h4>{{ trip.name }}</h4><p>{{ trip.resort }} · {{ trip.length }}</p></div>
+      <span>{{ trip.start | date: 'MMM d, y' }}</span>
+    </div>
+  </section>
+</main>

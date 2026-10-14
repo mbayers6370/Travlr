@@ -1,0 +1,11 @@
+<article class="trip-row">
+  <img [src]="imageUrl(trip.image)" alt="{{ trip.name }}">
+  <div class="trip-content">
+    <div class="trip-identity"><h3>{{ trip.name }}</h3><span>{{ trip.code }}</span></div>
+    <div class="trip-description" [innerHTML]="trip.description"></div>
+  </div>
+  <div class="trip-actions">
+    <button type="button" class="btn btn-outline-danger icon-button" (click)="requestDelete()" aria-label="Delete {{ trip.name }}"><ion-icon name="trash-outline" aria-hidden="true"></ion-icon></button>
+    <button type="button" class="btn btn-outline-primary" (click)="editTrip()"><ion-icon name="create-outline" aria-hidden="true"></ion-icon> Edit</button>
+  </div>
+</article>
