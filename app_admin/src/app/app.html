@@ -1,3 +1,4 @@
+@if (auth.isAuthenticated()) {
 <div class="admin-shell">
   <aside class="admin-sidebar">
     <a class="brand" routerLink="/" aria-label="Travlr Getaways admin home">
@@ -24,12 +25,15 @@
 
   <section class="admin-workspace">
     <header class="admin-topbar">
-      <span>Admin</span>
+      <span>{{ auth.user()?.name || 'Admin' }}</span>
       <span class="topbar-divider" aria-hidden="true"></span>
-      <span class="admin-avatar" aria-label="Administrator">MB</span>
-      <ion-icon name="chevron-down-outline" aria-hidden="true"></ion-icon>
+      <span class="admin-avatar" aria-label="Administrator">{{ (auth.user()?.name || 'A').slice(0, 2).toUpperCase() }}</span>
+      <button class="logout-button" type="button" (click)="logout()">Log out</button>
     </header>
 
     <router-outlet></router-outlet>
   </section>
 </div>
+} @else {
+  <router-outlet></router-outlet>
+}

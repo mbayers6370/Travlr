@@ -4,6 +4,8 @@ const path = require('path');
 const router = express.Router();
 const ctrlTrips = require('../controllers/trips');
 const ctrlMessages = require('../controllers/messages');
+const ctrlAuth = require('../controllers/authentication');
+const { requireAuth, requireAdmin } = require('../middleware/auth');
 
 const imageStorage = multer.diskStorage({
   destination: path.join(__dirname, '../../public/images'),
@@ -21,24 +23,28 @@ const upload = multer({
   }
 });
 
+router.post('/register', ctrlAuth.register);
+router.post('/login', ctrlAuth.login);
+
 router
   .route('/trips')
   .get(ctrlTrips.tripsList)
-  .post(ctrlTrips.tripsAddTrip);
+  .post(requireAuth, requireAdmin, ctrlTrips.tripsAddTrip);
 
-router.post('/trips/upload', upload.single('image'), ctrlTrips.tripsUploadImage);
+// Authorization deliberately precedes Multer so rejected uploads never reach disk.
+router.post('/trips/upload', requireAuth, requireAdmin, upload.single('image'), ctrlTrips.tripsUploadImage);
 
 router
   .route('/messages')
-  .get(ctrlMessages.messagesList)
+  .get(requireAuth, requireAdmin, ctrlMessages.messagesList)
   .post(ctrlMessages.messagesCreate);
 
-router.patch('/messages/:messageId/read', ctrlMessages.messagesSetReadState);
+router.patch('/messages/:messageId/read', requireAuth, requireAdmin, ctrlMessages.messagesSetReadState);
 
 router
   .route('/trips/:tripCode')
   .get(ctrlTrips.tripsFindByCode)
-  .put(ctrlTrips.tripsUpdateTrip)
-  .delete(ctrlTrips.tripsDeleteTrip);
+  .put(requireAuth, requireAdmin, ctrlTrips.tripsUpdateTrip)
+  .delete(requireAuth, requireAdmin, ctrlTrips.tripsDeleteTrip);
 
 module.exports = router;

@@ -52,7 +52,7 @@ const tripsUpdateTrip = async (req, res) => {
     const trip = await Trip.findOneAndUpdate(
       { code: req.params.tripCode },
       updates,
-      { new: true, runValidators: true }
+      { returnDocument: 'after', runValidators: true }
     );
 
     if (!trip) {

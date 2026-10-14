@@ -42,7 +42,7 @@ const messagesSetReadState = async (req, res) => {
     const message = await Message.findByIdAndUpdate(
       req.params.messageId,
       { isRead: req.body.isRead },
-      { new: true, runValidators: true }
+      { returnDocument: 'after', runValidators: true }
     ).lean();
 
     if (!message) {

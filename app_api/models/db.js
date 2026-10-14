@@ -50,3 +50,4 @@ process.on('SIGTERM', () => {
 
 require('./travlr');
 require('./message');
+require('./user');
